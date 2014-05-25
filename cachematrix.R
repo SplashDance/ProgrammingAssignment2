@@ -1,16 +1,25 @@
-#################################
-## Working draft of Assignment #2
-#################################
+####################################
+## Working draft of Assignment #2 ##
+####################################
 ## This function creates a special "CacheMatrix" object that can cache its inverse.
 ## IMPORTANT: We assume that all "CacheMatrix" objects created will be reflect
 ## invertible (i.e. Non-Singular) matrices...
 
+
 makeCacheMatrix <- function(x = matrix()) {
   # Creates instance of "CacheMatrix" object
+  #
+  # Args:
+  #   x: an nxn matrix--if no argument is passed then "x" will, by default, be a
+  #      1x1 matrix with NA as its sole element.
+  #
+  # Returns:
+  #   A list composed of 4 functions: set, get, set.inverse, & get.inverse
+  
   inv <- NULL  
   set <- function(y) {
     x <<- y
-    inv <<- NULL
+    inv <<- NULL  # This ensures that when "x" is changed, the cache is cleared
   }
   get <- function() x
   set.inverse <- function(inverse) inv <<- inverse
